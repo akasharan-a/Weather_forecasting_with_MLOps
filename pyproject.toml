@@ -1,0 +1,13 @@
+[project]
+name = "Weather_forecasting_with_MLOps"
+version = "0.1.0"
+description = "Weather forecasting application leveraging MLOps concepts"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.uv.workspace]
+members = [
+    "mlops_services",
+    "web_ui",
+]
