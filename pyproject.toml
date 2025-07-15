@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Weather forecasting application leveraging MLOps concepts"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = ["ipykernel"]
 
 [tool.uv.workspace]
 members = [
