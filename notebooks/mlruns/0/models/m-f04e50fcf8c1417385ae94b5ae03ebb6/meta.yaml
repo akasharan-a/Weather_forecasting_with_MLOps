@@ -1,0 +1,10 @@
+artifact_location: file:///home/legacy/Projects/Weather_forecasting_with_MLOps/notebooks/mlruns/0/models/m-f04e50fcf8c1417385ae94b5ae03ebb6/artifacts
+creation_timestamp: 1753014116787
+experiment_id: '0'
+last_updated_timestamp: 1753014118088
+model_id: m-f04e50fcf8c1417385ae94b5ae03ebb6
+model_type: null
+name: darts_pyfunc_model
+source_run_id: 855e2bb4a56b456cb2b1ce0219beb7c4
+status: 2
+status_message: null
