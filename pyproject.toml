@@ -3,7 +3,7 @@ name = "Weather_forecasting_with_MLOps"
 version = "0.1.0"
 description = "Weather forecasting application leveraging MLOps concepts"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = "==3.12"
 dependencies = ["ipykernel","PyYaml","Pandas","matplotlib","seaborn"]
 
 [tool.uv.workspace]

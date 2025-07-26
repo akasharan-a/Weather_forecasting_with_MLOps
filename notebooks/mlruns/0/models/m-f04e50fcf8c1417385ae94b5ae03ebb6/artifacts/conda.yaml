@@ -1,9 +1,0 @@
-channels:
-- defaults
-dependencies:
-- python~=3.13.5
-- pip
-- pip:
-  - mlflow
-  - u8darts==0.36.0
-name: squirrel_env

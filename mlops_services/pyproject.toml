@@ -3,5 +3,5 @@ name = "mlops-services"
 version = "0.1.0"
 description = "MLOps Backend"
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = ['pandas','u8darts','dvc','mlflow==2.22','python-dotenv']
+requires-python = "==3.12"
+dependencies = ['pandas','u8darts','dvc','python-dotenv',"mlflow==2.22"]
