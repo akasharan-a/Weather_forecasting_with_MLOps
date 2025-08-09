@@ -1,0 +1,26 @@
+stages:
+  retrieve:
+    cmd: python mlops_services/src/components/retrieve.py
+    outs:
+      - mlops_services/data/raw/train.csv
+      - mlops_services/data/raw/test.csv
+
+  train:
+    cmd: python train.py --params params.yaml
+    deps:
+      - data/processed/data_processed.csv
+      - train.py
+      - params.yaml
+    outs:
+      - model/model.pkl
+    metrics:
+      - metrics/accuracy.json
+
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+      - model/model.pkl
+      - data/processed/data_processed.csv
+      - evaluate.py
+    metrics:
+      - metrics/eval_report.json

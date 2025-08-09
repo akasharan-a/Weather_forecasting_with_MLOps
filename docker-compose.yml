@@ -1,0 +1,31 @@
+version: "0.1"
+secrets:
+  influxdb_username:
+    file: db/secrets/influxdb_username.txt
+  influxdb_password:
+    file: db/secrets/influxdb_password.txt
+  influxdb_admin_token:
+    file: db/secrets/influxdb_admin_token.txt
+
+services:
+  influxdb:
+    image: influxdb:2-alpine
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_ORG: Weather_forecasting_with_MLOps
+      DOCKER_INFLUXDB_INIT_BUCKET: Weather_data_RAW
+      DOCKER_INFLUXDB_INIT_USERNAME_FILE: /run/secrets/influxdb_username
+      DOCKER_INFLUXDB_INIT_PASSWORD_FILE: /run/secrets/influxdb_password
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN_FILE: /run/secrets/influxdb_admin_token
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    secrets:
+      - influxdb_username
+      - influxdb_password
+      - influxdb_admin_token
+
+volumes:
+  influxdb_data:

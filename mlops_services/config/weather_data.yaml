@@ -1,0 +1,4 @@
+raw_data_bucket: "Weather_data_RAW"
+offline_data_end: "2024-12-31 23:00"
+feature_map:
+  

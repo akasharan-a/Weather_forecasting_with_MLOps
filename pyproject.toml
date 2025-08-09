@@ -3,11 +3,11 @@ name = "Weather_forecasting_with_MLOps"
 version = "0.1.0"
 description = "Weather forecasting application leveraging MLOps concepts"
 readme = "README.md"
-requires-python = "==3.12"
-dependencies = ["ipykernel","PyYaml","Pandas","matplotlib","seaborn"]
+requires-python = "==3.12.0"
+dependencies = ["ipykernel","PyYaml","matplotlib","seaborn"]
 
 [tool.uv.workspace]
 members = [
     "mlops_services",
-    "web_ui",
+    "web_ui"
 ]
