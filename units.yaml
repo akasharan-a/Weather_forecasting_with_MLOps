@@ -1,0 +1,14 @@
+cloud_cover: '%'
+dew_point_2m: °C
+et0_fao_evapotranspiration: mm
+is_day: ''
+rain: mm
+relative_humidity_2m: '%'
+surface_pressure: hPa
+temperature_2m: °C
+time: iso8601
+vapour_pressure_deficit: kPa
+weather_code: wmo code
+wind_direction_10m: °
+wind_gusts_10m: km/h
+wind_speed_10m: km/h

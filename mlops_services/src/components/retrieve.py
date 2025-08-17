@@ -1,3 +1,0 @@
-####
-import polars as rs
- 

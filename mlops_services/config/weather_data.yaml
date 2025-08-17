@@ -1,4 +1,41 @@
-raw_data_bucket: "Weather_data_RAW"
-offline_data_end: "2024-12-31 23:00"
-feature_map:
-  
+all_cities: ['BLR','DEL']
+co_ordinates: 
+  BLR:
+    longitude: 77.5937
+    latitude: 12.9719
+    tz: "Asia/Kolkata"
+  DEL:
+    longitude: 77.2315
+    latitude: 28.6519
+    tz: "Asia/Kolkata"
+
+time:
+  frequency: hourly
+  timezone: auto
+  timeformat: iso8601
+
+measurements:
+  units: metric
+  metric:
+    temperature_unit: celsius
+    wind_speed_unit: kmh
+    precipitation_unit: mm
+
+historic_parameters:
+  - temperature_2m
+  - relative_humidity_2m
+  - dew_point_2m
+  - rain
+  - weather_code
+  - surface_pressure
+  - cloud_cover
+  - et0_fao_evapotranspiration
+  - vapour_pressure_deficit
+  - wind_speed_10m
+  - wind_direction_10m
+  - wind_gusts_10m
+  - is_day
+
+historic_data_range:
+  start: '2023-01-01'
+  end: '2025-06-30'

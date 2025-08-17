@@ -1,7 +1,7 @@
-from mlops_services.src.utils.db_tools import check_data, check_data
+from mlops_services.src.utils.db_io import check_data, check_data
 import polars as pl 
 
-class DataIngestion():
+class Data():
     def __init__(self):
         pass
     def data_availability(self):

@@ -1,0 +1,22 @@
+ciy: None
+
+source:
+  raw_bucket: WEATHER_DATA_RAW
+  raw_local: "mlops_services/data/historic/historic_BLR.parquet"
+
+path:  
+  raw: "mlops_services/data/raw/train.parquet"
+  raw_test: 'mlops_services/data/raw/test.parquet'
+  processed: "mlops_services/data/processed/train_s1.parquet"
+
+ML:
+  test_split_ratio: 0.25
+  random_seed: 123
+  features:
+    -time
+
+
+
+
+
+  

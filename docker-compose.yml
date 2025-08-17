@@ -16,7 +16,7 @@ services:
     environment:
       DOCKER_INFLUXDB_INIT_MODE: setup
       DOCKER_INFLUXDB_INIT_ORG: Weather_forecasting_with_MLOps
-      DOCKER_INFLUXDB_INIT_BUCKET: Weather_data_RAW
+      DOCKER_INFLUXDB_INIT_BUCKET: WEATHER_DATA_RAW
       DOCKER_INFLUXDB_INIT_USERNAME_FILE: /run/secrets/influxdb_username
       DOCKER_INFLUXDB_INIT_PASSWORD_FILE: /run/secrets/influxdb_password
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN_FILE: /run/secrets/influxdb_admin_token
