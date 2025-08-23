@@ -1,4 +1,4 @@
-ciy: None
+target_city: None
 
 source:
   raw_bucket: WEATHER_DATA_RAW
