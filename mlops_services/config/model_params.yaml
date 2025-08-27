@@ -1,0 +1,51 @@
+source:
+  raw_online: WEATHER_DATA_RAW
+  raw_local: "mlops_services/data/historic"
+
+folder:  
+  raw: "mlops_services/data/raw"
+  processed: "mlops_services/data/processed"
+
+random_seed: 123
+
+test_split_ratio: 0.25
+
+data_process:
+  resampling_freq: 1h
+  impute_missing: ffill
+
+features:
+    time: 
+      raw: _time
+      std: time
+    past_feats:
+        - cloud_cover
+        - dew_point_2m
+        - et0_fao_evapotranspiration
+        - generationtime_ms
+        - rain
+        - relative_humidity_2m
+        - surface_pressure
+        - vapour_pressure_deficit
+        - weather_code
+        - wind_direction_10m
+        - wind_gusts_10m
+        - wind_speed_10m
+    future_feats: None
+    past_encoders: None
+    future_encoders:
+        - daily_cycle
+    target: temperature_2m
+
+lag:
+  y_lags: 72
+  past_lags: 72
+  future_lags: 24
+
+forecast_length: 24
+
+algorithm:
+  XGB: None
+  Linear: None
+
+hyper_param_tuning: True

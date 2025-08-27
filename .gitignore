@@ -90,3 +90,6 @@ Notes.txt
 ## MLOps artifacts
 mlops_services/data
 mlops_services/models
+
+##logs
+mlops_services/logs

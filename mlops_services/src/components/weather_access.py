@@ -11,12 +11,12 @@ class HistoricWeather():
     '''
     def __init__(self, config,city :str,):
         self.config = config
-        if city  in self.config.all_cities:
+        if city  in list(self.config.__dict__.keys()):
             self.city = city
         else:
             raise ValueError("Undefined City is used")    
         self.base_url=os.getenv('HISTORIC_WEATHER_URL')
-        city_co_ords = getattr(self.config.co_ordinates,self.city)
+        city_co_ords = getattr(self.config.cities,self.city)
         self.params  = {
         "latitude": city_co_ords.latitude,
         "longitude": city_co_ords.longitude,

@@ -1,5 +1,4 @@
-all_cities: ['BLR','DEL']
-co_ordinates: 
+cities: 
   BLR:
     longitude: 77.5937
     latitude: 12.9719
