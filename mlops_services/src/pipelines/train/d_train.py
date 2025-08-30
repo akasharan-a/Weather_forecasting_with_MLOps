@@ -1,4 +1,4 @@
-from mlops_services.src.components.forecasting_models import XGB
+from mlops_services.src.components.model_training import Trainer
 from mlops_services.src.utils import command_line, configs, logs
 
 stage = "04_Model_Training"
@@ -21,8 +21,12 @@ class ModelTraining:
         return parser.get_args()
 
     def run(self):
-        pass
-
+        model = Trainer(self.config,self.logger,"train")
+        model.select_algorithm(self.args.algo)
+        model.train()
+        
+   
+        
 if __name__ == "__main__":
     logger.info(f"{stage} --> Started")
     try:

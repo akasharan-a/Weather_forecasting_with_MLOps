@@ -31,8 +31,8 @@ features:
         - wind_direction_10m
         - wind_gusts_10m
         - wind_speed_10m
-    future_feats: None
-    past_encoders: None
+    future_feats: 
+    past_encoders: 
     future_encoders:
         - daily_cycle
     target: temperature_2m

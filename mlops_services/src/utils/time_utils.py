@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-
+import numpy as np
 
 def add_hour(time, hour: int):
     pass
@@ -24,5 +24,19 @@ def convert_to_utc(*times ,tz: str, from_format:str, to_format:str):
         dt_utc = dt_localized.astimezone(ZoneInfo("UTC"))
         times_utc.append(dt_utc.strftime(to_format))
     return *times_utc,
-        
-    
+
+     
+def darts_encoders(encoders:str,tense:'str'):
+    def _daily_cycle(idx):
+        normalized_hour = ((idx / 24) * 2 * np.pi) - ((2 / 24) * 2 * np.pi)
+        cyclic_hour = (-np.cos(normalized_hour) + 1) / 2
+        return cyclic_hour
+    def _montly_cycle(idx):
+        return 0
+    all_encoders = {'daily_cycle':_daily_cycle,
+                          'monthly_cycle':_montly_cycle
+    }
+    out_encoders={}
+    for encoder in  all_encoders.keys():
+        out_encoders[encoder]= {tense: [all_encoders[encoder]]}
+    return  out_encoders
