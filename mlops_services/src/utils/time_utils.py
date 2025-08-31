@@ -26,17 +26,24 @@ def convert_to_utc(*times ,tz: str, from_format:str, to_format:str):
     return *times_utc,
 
      
-def darts_encoders(encoders:str,tense:'str'):
+def darts_encoders(encoders:list):
     def _daily_cycle(idx):
-        normalized_hour = ((idx / 24) * 2 * np.pi) - ((2 / 24) * 2 * np.pi)
-        cyclic_hour = (-np.cos(normalized_hour) + 1) / 2
-        return cyclic_hour
-    def _montly_cycle(idx):
+        # Convert hour to radians for cosine (full cycle 24 hours)
+        hour = idx.hour
+        radians = 2 * np.pi * hour / 24.0
+        # Cosine naturally peaks at 0 radians, so shift by 12 hours (pi radians)
+        value = np.cos(radians - np.pi)
+        return value
+    def _monthly_cycle(idx):
         return 0
     all_encoders = {'daily_cycle':_daily_cycle,
-                          'monthly_cycle':_montly_cycle
+                          'monthly_cycle':_monthly_cycle
     }
-    out_encoders={}
-    for encoder in  all_encoders.keys():
-        out_encoders[encoder]= {tense: [all_encoders[encoder]]}
+    out_encoders =[]
+    for enc in encoders:
+        out_encoders.append(all_encoders[enc])
     return  out_encoders
+
+def current_time():
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    

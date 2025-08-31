@@ -2,7 +2,7 @@ source:
   raw_online: WEATHER_DATA_RAW
   raw_local: "mlops_services/data/historic"
 
-folder:  
+folder:
   raw: "mlops_services/data/raw"
   processed: "mlops_services/data/processed"
 
@@ -15,27 +15,27 @@ data_process:
   impute_missing: ffill
 
 features:
-    time: 
-      raw: _time
-      std: time
-    past_feats:
-        - cloud_cover
-        - dew_point_2m
-        - et0_fao_evapotranspiration
-        - generationtime_ms
-        - rain
-        - relative_humidity_2m
-        - surface_pressure
-        - vapour_pressure_deficit
-        - weather_code
-        - wind_direction_10m
-        - wind_gusts_10m
-        - wind_speed_10m
-    future_feats: 
-    past_encoders: 
-    future_encoders:
-        - daily_cycle
-    target: temperature_2m
+  time:
+    raw: _time
+    std: time
+  past_feats:
+    - cloud_cover
+    - dew_point_2m
+    - et0_fao_evapotranspiration
+    - generationtime_ms
+    - rain
+    - relative_humidity_2m
+    - surface_pressure
+    - vapour_pressure_deficit
+    - weather_code
+    - wind_direction_10m
+    - wind_gusts_10m
+    - wind_speed_10m
+  future_feats:
+  custom_encoders:
+    future:
+      - daily_cycle
+  target: temperature_2m
 
 lag:
   y_lags: 72
@@ -44,7 +44,7 @@ lag:
 
 forecast_length: 24
 
-algorithm:
+algorithms:
   XGB: None
   Linear: None
 

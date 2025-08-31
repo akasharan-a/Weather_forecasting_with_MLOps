@@ -29,6 +29,28 @@ def setup_logger(name, log_folder="mlops_services/logs", level=logging.INFO,star
 
     return logger
 
+# Setup logging with a custom save path
+def initiate_logger(name, log_folder="mlops_services/logs", level=logging.INFO,start_over=True):
+    """Setup logger to log to console and a custom file path."""
+    log_file_path = Path(log_folder)/f"{name}.log"
+    os.makedirs(Path(log_folder), exist_ok=True)
+    
+    if os.path.exists(log_file_path) & start_over:
+        os.remove(log_file_path)
+    logging.basicConfig(
+        level=level,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_file_path),
+            logging.StreamHandler()
+        ]
+    )
+
+def get_logger():
+    logger = logging.getLogger()  
+    return logger
+
+
 def validate_logger(logger):
     if logger is not None:
         return logger

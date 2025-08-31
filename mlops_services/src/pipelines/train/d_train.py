@@ -6,14 +6,13 @@ logger = logs.setup_logger(stage)
 
 
 class ModelTraining:
-    def __init__(self,logger=logger):
-        self.logger = logs.validate_logger(logger)
+    def __init__(self, logger=logger):
+        self.logger = logger
         self.args = self.arguments()
         self.config = configs.Config.from_yaml(
             "mlops_services/config/model_params.yaml"
         )
         assert self.args.algo in self.config.algorithms.__dict__.keys()
-
 
     def arguments(self):
         parser = command_line.Args(prog="ModelTraining")
@@ -21,12 +20,11 @@ class ModelTraining:
         return parser.get_args()
 
     def run(self):
-        model = Trainer(self.config,self.logger,"train")
+        model = Trainer(self.config, logger, "train")
         model.select_algorithm(self.args.algo)
         model.train()
-        
-   
-        
+
+
 if __name__ == "__main__":
     logger.info(f"{stage} --> Started")
     try:
