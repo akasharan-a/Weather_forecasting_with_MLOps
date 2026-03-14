@@ -21,10 +21,10 @@ class TrainTestSet:
             self.df_train, self.df_test = self.df.clone(), self.df.filter(pl.lit(False))
 
     def save(self):
-        processed_folder = Path(self.config.folder.raw)
+        folder = Path(self.config.path.raw_data)
         # os.makedirs(processed_folder, exist_ok=True)
-        self.df_train.write_parquet(processed_folder / f"train.parquet")
-        self.df_test.write_parquet(processed_folder / f"test.parquet")
+        self.df_train.write_parquet(folder / f"train.parquet")
+        self.df_test.write_parquet(folder / f"test.parquet")
 
 
 class PreprocessData:
@@ -33,7 +33,7 @@ class PreprocessData:
         self.logger = logger
         self.filename = filename
         self.df = pl.read_parquet(
-            Path(self.config.folder.raw) / f"{self.filename}.parquet"
+            Path(self.config.path.raw_data) / f"{self.filename}.parquet"
         )
         self.df_orig = self.df.clone()
         self.logger.info(f">>Preprocessing : {self.filename}")
@@ -73,6 +73,7 @@ class PreprocessData:
                 .alias(time_col)
             )
         )
+        count_after = self.df.height
         self.logger.info(
             f"Data resampled -- Frequency:{resample_freq} Count before:{count_before} & Count After:{count_after}"
         )
@@ -87,11 +88,11 @@ class PreprocessData:
         count_after = self.df.null_count().to_dict(as_series=False)
         self.logger.info(
             f"Features imputed -- Strategy:{self.config.data_process.impute_missing} \
-                        \n Count before:{count_before} & Count After:{count_after}"
+                        \n Null count before:{count_before} & Null count After:{count_after}"
         )
 
     def save(self):
-        processed_folder = Path(self.config.folder.processed)
+        processed_folder = Path(self.config.path.final_data)
         os.makedirs(processed_folder, exist_ok=True)
         file_path = processed_folder / f"{self.filename}.parquet"
         self.df.write_parquet(file_path)

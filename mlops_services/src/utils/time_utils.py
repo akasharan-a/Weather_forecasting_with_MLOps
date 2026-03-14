@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import time
 from zoneinfo import ZoneInfo
 import numpy as np
 
@@ -44,6 +45,20 @@ def darts_encoders(encoders:list):
         out_encoders.append(all_encoders[enc])
     return  out_encoders
 
-def current_time():
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+def current_time(format):
+    return datetime.now().strftime(format)
+
+
+class Timer:
+    def __init__(self, verbose=False):
+        self.verbose = verbose
     
+    def __enter__(self):
+        self.start_time = time.perf_counter()
+        return self
+    
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.end_time = time.perf_counter()
+        self.elapsed = self.end_time - self.start_time
+        if self.verbose:
+            print(f"Elapsed time: {self.elapsed:.4f} seconds")

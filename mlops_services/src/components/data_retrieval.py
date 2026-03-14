@@ -38,7 +38,7 @@ class GetRawData:
             raise ValueError("Failed to load local data")
 
     def save(self):
-        raw_folder = Path(self.config.folder.raw)
+        raw_folder = Path(self.config.path.raw_data)
         file_path = raw_folder / f"{self.filename}.parquet"
         os.makedirs(raw_folder, exist_ok=True)
         self.df.write_parquet(file_path)

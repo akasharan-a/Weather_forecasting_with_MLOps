@@ -20,9 +20,11 @@ class ModelTraining:
         return parser.get_args()
 
     def run(self):
-        model = Trainer(self.config, logger, "train")
-        model.select_algorithm(self.args.algo)
-        model.train()
+        model_trainer = Trainer(self.config, logger, "train")
+        model_trainer.train(self.args.algo)
+        model_trainer.log_experiment()
+        model_trainer.save()
+
 
 
 if __name__ == "__main__":

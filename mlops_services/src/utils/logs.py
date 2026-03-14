@@ -10,6 +10,12 @@ def setup_logger(name, log_folder="mlops_services/logs", level=logging.INFO,star
     os.makedirs(Path(log_folder), exist_ok=True)
     if os.path.exists(log_file_path) & start_over:
         os.remove(log_file_path)
+        
+    old_logger = logging.getLogger(name)
+    # Remove existing handlers if any
+    for handler in old_logger.handlers[:]:
+        old_logger.removeHandler(handler)
+        handler.close()    
     # formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
@@ -69,3 +75,4 @@ def get_parent_logger():
     
     # Get and return the logger instance for the parent module
     return logging.getLogger(parent_module_name)
+    

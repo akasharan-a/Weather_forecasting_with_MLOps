@@ -2,9 +2,12 @@ source:
   raw_online: WEATHER_DATA_RAW
   raw_local: "mlops_services/data/historic"
 
-folder:
-  raw: "mlops_services/data/raw"
-  processed: "mlops_services/data/processed"
+path:
+  raw_data: "mlops_services/data/raw"
+  final_data: "mlops_services/data/final"
+  model: "mlops_services/models"
+
+experiment_name: DartsForecastingModels
 
 random_seed: 123
 

@@ -10,7 +10,7 @@ class DataSplit:
         self.logger = logs.validate_logger(logger)
         self.args = self.arguments()
         self.config = configs.Config.from_yaml(
-            "mlops_services/config/model_train.yaml"
+            "mlops_services/config/model_params.yaml"
         )
 
     def arguments(self):
