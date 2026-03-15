@@ -72,8 +72,7 @@ uv.lock
 .env
 .envrc
 .venv
-.env.mlops
-env/
+mlops_services/.env.mlopsenv/
 venv/
 ENV/
 env.bak/
