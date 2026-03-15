@@ -4,4 +4,4 @@ version = "0.1.0"
 description = "Web frontend"
 readme = "README.md"
 requires-python = "==3.12.0"
-dependencies = ["Plotly","plotly-resampler"]
+dependencies = ["taipy","Plotly","plotly-resampler"]
